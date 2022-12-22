@@ -38,7 +38,6 @@ void clean_que_from_movent(int index){
 void clean_que_spam(int index){
     while (!boats[index].queue.empty())
     {
-        //printf("%d %d %d\n",boats[index].queue.top().atime,boats[index].id,boats[index].queue.top().id);
         
         boats[index].queue.pop();
     }
@@ -95,7 +94,7 @@ void checkPointRange( int index,int N,int time)
     if(dis.x){
         int abs_dis_x = abs(dis.x);
         int abs_dis_y = abs(dis.y);
-        if(abs_dis_x < abs_dis_y){ // abs_dis_x > it means faster way its throw y 
+        if(abs_dis_x < abs_dis_y){ 
           
                 
                 if(dis.y<0)  new_move.movement = &Boat::move_up;
@@ -111,7 +110,6 @@ void checkPointRange( int index,int N,int time)
             
             
         }
-        //printf("RRRRRRRRRRRRRRRRRR    %d  %f  RRRRRRRRRRRRRRRRRRRRRRRRR",boats[i].id,dist);
         boats[index].state=2;
         
             
@@ -192,11 +190,10 @@ void shoot(int yours_index,int enemy_index, int  weapon_index, double distance, 
     }else{
         pick_chance = random_range(0,1000);
     }
-    if(pick_chance <  boats[yours_index].weapon[weapon_index].accuracy){ //střelili jsme do něj 
+    if(pick_chance <  boats[yours_index].weapon[weapon_index].accuracy){ 
               
         calendar c1;
         int time_shoot = time + round(distance/(boats[yours_index].weapon[weapon_index].speed));
-        //printf("BB %d %d AA\n", time,time_shoot);
         c1.atime = -time_shoot;
         c1.id = SHOOT;
         c1.priority = 2;
@@ -431,27 +428,8 @@ void setup_map(){
         for (size_t x = 0; x < x_size; x++)
         {
             map[y][x]=0;
-            //printf("%d",map[x][y]);
         }
-        //printf("\n");
     }
-
-    //printf("%d",random_range(0,10));
-    
-    priority_queue<calendar> q1;
-    calendar calendar1;
-    //calendar1.funcptr=hello;
-    //q1.push(calendar1);
-    //calendar w = q1.top();
-    //w.funcptr();
-    coords kokot_start;
-    kokot_start.x = 0;
-    kokot_start.y = 0;
-    //Weapon weapons[100];
-    //weapons[0] = Weapon(2,5,3);
-    //Boat myObj(0,"kokot",2,2,2,kokot_start,2,weapons,2);    
-
-
 
 
 }
@@ -594,10 +572,6 @@ int main(int argc, char** argv) {
     srand(time(NULL));
     int test= 0;
     int size_arg_list = args(argc,argv)+1;
-    for (size_t i = 0; i < size_arg_list; i++)
-    {
-        //printf("%d\n",arg_list[i].count);
-    }
     setup_map();
     int id = setup_boats(size_arg_list);
     
@@ -605,16 +579,12 @@ int main(int argc, char** argv) {
     int t = 0;
     while (1)
     {   
-        //operace pro lode 
         for (int i = 1; i < id; i++)
         {
-            //conditions to reach state 
 
             if(boats[i].queue.empty() && boats[i].state != DESTROYED){
                 boats[i].state = INITIALSTATE; 
             }
-            //states
-            //printf(" %d ",boats[i].state);
             switch (boats[i].state)
             {
             case INITIALSTATE:
@@ -680,7 +650,6 @@ int main(int argc, char** argv) {
         }
 
         t++;
-        //vykreslování mapy
         if(t%500 == 0 ){
 
         for (size_t y = 0; y < y_size; y++)
