@@ -301,7 +301,7 @@ void create_boat(int id,int team,string name,int x, int y){
                                                 mark_torpedo_count_magazines, mark_torpedo_reload_time, mark_torpedo_shell_velocity);
             
         }
-        for ( weapon_counter=weapon_counter ; weapon_counter < caliber_gun_weapon_count; weapon_counter++)
+        for ( weapon_counter=weapon_counter ; weapon_counter < caliber_gun_weapon_count + mark_torpedo_weapon_count; weapon_counter++)
         {
             weapons[weapon_counter] = Weapon(GUN,caliber_gun_weapon_dmg, caliber_gun_range,caliber_gun_accuracy, caliber_gun_magazine_size,
                                                 caliber_gun_count_magazines, caliber_gun_reload_time, caliber_gun_shell_velocity);
@@ -327,7 +327,7 @@ void create_boat(int id,int team,string name,int x, int y){
                                                 G7e_count_magazines, G7e_reload_time, G7e_shell_velocity);
             
         }
-        for ( weapon_counter=weapon_counter ; weapon_counter < C_34_naval_gun_weapon_count; weapon_counter++)
+        for ( weapon_counter=weapon_counter ; weapon_counter < C_34_naval_gun_weapon_count + G7e_weapon_count; weapon_counter++)
         {
             weapons[weapon_counter] = Weapon(GUN,C_34_naval_gun_weapon_dmg, C_34_naval_gun_range, C_34_naval_gun_accuracy, C_34_naval_gun_magazine_size,
                                                 C_34_naval_gun_count_magazines, C_34_naval_gun_reload_time, C_34_naval_gun_shell_velocity);
